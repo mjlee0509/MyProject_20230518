@@ -27,16 +27,16 @@
     padding-bottom: 30px;
 }
 
-#save-form {
+#form-area {
     margin: auto;
     width: 33%;
 }
 
-#save-form .input-area {
+#form-area .input-area {
     margin: auto;
     text-align: center;
 }
-#save-form .img-area {
+#form-area .img-area {
     margin: auto 30px;
     text-align: center;
 }
@@ -81,7 +81,7 @@ select:focus{
     width: 64%;
 }
 
-#save-form .button-area {
+#form-area .button-area {
     float: right;
     margin-right: 10px;
 }

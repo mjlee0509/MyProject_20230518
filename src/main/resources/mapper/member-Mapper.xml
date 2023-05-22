@@ -14,6 +14,16 @@
         values (#{originalFileName}, #{storedFileName}, #{memberId})
     </insert>
 
+    <select id="findByEmail" parameterType="String" resultType="member">
+        select *
+        from member_table
+        where memberEmail = #{memberEmail}
+    </select>
+
+    <select id="login" parameterType="member" resultType="member">
+        select * from member_table where memberEmail = #{memberEmail} and memberPassword = #{memberPassword}
+    </select>
+
 </mapper>
 
 

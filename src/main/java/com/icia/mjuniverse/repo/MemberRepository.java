@@ -20,4 +20,12 @@ public class MemberRepository {
     public void saveFile(MemberProfileDTO memberProfileDTO) {
         sql.insert("Member.saveFile", memberProfileDTO);
     }
+
+    public MemberDTO findByEmail(String loginEmail) {
+        return sql.selectOne("Member.findByEmail", loginEmail);
+    }
+
+    public MemberDTO login(MemberDTO memberDTO) {
+        return sql.selectOne("Member.login", memberDTO);
+    }
 }
