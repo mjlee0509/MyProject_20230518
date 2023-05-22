@@ -49,6 +49,8 @@
             </select>
             <input type="text" name="memberMobile" id="member-mobile" placeholder="전화번호를 입력하세요(010-0000-0000)"> <br>
             <p id="mobile-check-result"></p>
+            <textarea name="memberDescription" id="member-description" placeholder="나를 표현해보세요!" cols="30" rows="10"></textarea>
+            <br>
         </div>
         <div class="button-area">
             <input type="submit" value="가입하기" class="btn btn-dark" id="join-btn">

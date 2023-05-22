@@ -1,6 +1,7 @@
 package com.icia.mjuniverse.controller;
 
 import com.icia.mjuniverse.dto.MemberDTO;
+import com.icia.mjuniverse.dto.MemberProfileDTO;
 import com.icia.mjuniverse.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -54,6 +55,8 @@ public class MemberController {
         model.addAttribute("member", memberDTO);
         if (loginResult) {
             session.setAttribute("loginEmail", memberDTO.getMemberEmail());
+            session.setAttribute("loginId", memberDTO.getId());
+            model.addAttribute("loginInfo", memberDTO);
             return "index";
         } else {
             return "memberPages/memberLogin";
@@ -64,6 +67,18 @@ public class MemberController {
     public String logout(HttpSession session) {
         session.removeAttribute("loginEmail");
         return "redirect:/";
+    }
+
+    @GetMapping("/detail")
+    public String detail(HttpSession session, Model model) {
+        String loginEmail = (String)session.getAttribute("loginEmail");
+        MemberDTO memberDTO = memberService.findByEmail(loginEmail);
+        model.addAttribute("member", memberDTO);
+        if(memberDTO.getMemberProfile()==1) {
+            MemberProfileDTO memberProfileDTO = memberService.findFile(memberDTO.getId());
+            model.addAttribute("memberProfile", memberProfileDTO);
+        }
+        return "memberPages/memberDetail";
     }
 
 }

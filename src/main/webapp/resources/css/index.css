@@ -56,12 +56,29 @@
     color: black;
 }
 
+.main {
+    margin: auto;
+    width: 95%;
+    height: auto;
+    min-height: 100%;
+    padding-top: 50px;
+    padding-bottom: 30%;
+}
+
+.main h2 {
+    font-family: 'NeoDunggeunmoPro-Regular';
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
 #footer{
     margin: auto;
     height: 30%;
     width: 95%;
     padding-top: 10px;
     bottom: 0;
+    transform: translateY(-100%);
 }
 
 #footer p {

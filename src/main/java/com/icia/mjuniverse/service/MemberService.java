@@ -50,4 +50,12 @@ public class MemberService {
             return false;
         }
     }
+
+    public MemberDTO findById(Long id) {
+        return memberRepository.findById(id);
+    }
+
+    public MemberProfileDTO findFile(Long memberId) {
+        return memberRepository.findFile(memberId);
+    }
 }

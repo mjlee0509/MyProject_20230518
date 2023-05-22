@@ -12,20 +12,6 @@
     font-weight: normal;
     font-style: normal;
 }
-.main {
-    margin: auto;
-    width: 95%;
-    height: auto;
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
-
-.main h2 {
-    font-family: 'NeoDunggeunmoPro-Regular';
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
 
 #form-area {
     margin: auto;
@@ -77,12 +63,29 @@ select:focus{
     border-radius: 10px;
 }
 
+textarea {
+    width: 95%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    margin: 0px auto 20px;
+}
+
+textarea:focus {
+    outline: 1px solid #a77ed9;
+    border-bottom: 3px solid #9B51E0;
+    border-radius: 10px;
+
+}
+
 #member-mobile {
     width: 64%;
 }
 
 #form-area .button-area {
     float: right;
+    margin-top: 10px;
     margin-right: 10px;
 }
 

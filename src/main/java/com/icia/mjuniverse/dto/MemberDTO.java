@@ -10,6 +10,7 @@ public class MemberDTO {
     private String memberEmail;
     private String memberPassword;
     private String memberMobile;
+    private String memberDescription;
     private int memberProfile;
     private MultipartFile profileFile;
 
