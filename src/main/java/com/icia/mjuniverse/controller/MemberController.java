@@ -81,4 +81,24 @@ public class MemberController {
         return "memberPages/memberDetail";
     }
 
+    @GetMapping("/update")
+    public String updateForm(HttpSession session, Model model) {
+        String loginEmail = (String)session.getAttribute("loginEmail");
+        MemberDTO memberDTO = memberService.findByEmail(loginEmail);
+        model.addAttribute("member", memberDTO);
+        if(memberDTO.getMemberProfile()==1) {
+            MemberProfileDTO memberProfileDTO = memberService.findFile(memberDTO.getId());
+            model.addAttribute("memberProfile", memberProfileDTO);
+        }
+        return "memberPages/memberUpdate";
+    }
+
+    @PostMapping("/update")
+    public String update(@ModelAttribute MemberDTO memberDTO, Model model) throws IOException {
+        memberService.update(memberDTO);
+        MemberDTO dto = memberService.findById(memberDTO.getId());
+        model.addAttribute("member", dto);
+        return "redirect:/member/detail?id="+memberDTO.getId();
+    }
+
 }

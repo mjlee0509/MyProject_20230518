@@ -37,6 +37,8 @@ input[type=text] {
     margin: 0px auto 20px;
 }
 
+
+
 input[type=text]:focus {
     outline: none;
     border-bottom: 3px solid #9B51E0;

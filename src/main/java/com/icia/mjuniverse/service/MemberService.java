@@ -58,4 +58,23 @@ public class MemberService {
     public MemberProfileDTO findFile(Long memberId) {
         return memberRepository.findFile(memberId);
     }
+
+    public void update(MemberDTO memberDTO) throws IOException {
+        MemberDTO dto = memberRepository.update(memberDTO);
+
+        // 프로필 수정
+        String originalFileName = memberDTO.getProfileFile().getOriginalFilename();
+        String storedFileName = System.currentTimeMillis()+"-"+originalFileName;
+
+        MemberProfileDTO memberProfileDTO = new MemberProfileDTO();
+        memberProfileDTO.setOriginalFileName(originalFileName);
+        memberProfileDTO.setStoredFileName(storedFileName);
+        String savePath = "D:\\springFramework_img\\mjimages\\" + storedFileName;
+
+        memberDTO.getProfileFile().transferTo(new File(savePath));
+        memberRepository.updateFile(memberProfileDTO);
+
+
+
+    }
 }

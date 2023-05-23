@@ -32,6 +32,23 @@
         select * from member_profile_table where memberId=#{memberId}
     </select>
 
+    <update id="update" parameterType="member">
+        update member_table
+        set memberEmail=#{memberEmail},
+            memberName=#{memberName},
+            memberMobile=#{memberMobile},
+            memberDescription=#{memberDescription}
+        where id = #{id}
+    </update>
+
+    <update id="updateFile" parameterType="memberProfile">
+        update member_profile_table
+        set originalFileName=#{originalFileName},
+            storedFileName=#{storedFileName},
+            memberId=#{memberId}
+            where id = #{id}
+    </update>
+
 </mapper>
 
 

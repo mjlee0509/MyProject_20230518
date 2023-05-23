@@ -20,7 +20,7 @@
 <body>
 <%@include file="../components/header.jsp" %>
 <div class="main-50">
-    <table>
+    <table class="profile-table">
         <tr>
             <td>
                 <a href="/member/detail?id='${member.id}">
@@ -35,7 +35,7 @@
         </tr>
     </table>
 
-    <table>
+    <table class="info-table">
         <tr>
             <td><h3>NAME</h3></td>
         </tr>
@@ -58,15 +58,17 @@
         </tr>
     </table>
 
-    <input type="button" class="btn" style="width: 100%; background-color: black; color: white" value="정보수정"
-    onchange="update()">
+    <div class="button-area">
+        <input type="button" class="btn" style="width: 100%; background-color: black; color: white" value="정보수정"
+               onclick="update()">
+    </div>
 
 </div>
 <%@include file="../components/footer.jsp" %>
 </body>
 <script>
     const update = () => {
-        location.href = "/member/update";
+        location.href = "/member/update?id=${member.id}";
     }
 </script>
 </html>
