@@ -13,7 +13,6 @@
         <c:when test="${sessionScope.loginEmail == null}">
             <a href="/">MJ Universe</a>
             <div class="right">
-                <a href="/"> ABOUT ME </a>
                 <a href="/"> <i class="bi bi-search"></i> </a>
                 <input type="button" class="btn btn-dark" onclick="sign_up()" value="회원가입">
                 <input type="button" class="btn" style="background-color: #7300ff; color: white" onclick="login()"

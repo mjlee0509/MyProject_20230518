@@ -42,7 +42,16 @@ public class MemberRepository {
         return memberDTO;
     }
 
-    public void updateFile(MemberProfileDTO memberProfileDTO) {
+    public MemberProfileDTO updateFile(MemberProfileDTO memberProfileDTO) {
         sql.update("Member.updateFile", memberProfileDTO);
+        return memberProfileDTO;
+    }
+
+    public void delete(Long id) {
+        sql.delete("Member.delete", id);
+    }
+
+    public void removeFile(MemberProfileDTO memberProfileDTO) {
+        sql.delete("Member.removeFile", memberProfileDTO);
     }
 }

@@ -44,6 +44,7 @@ input[type=text]:focus {
     border-bottom: 3px solid #9B51E0;
 }
 
+
 select {
     width: 32%;
     border: 1px solid #C4C4C4;
@@ -75,10 +76,9 @@ textarea {
 }
 
 textarea:focus {
-    outline: 1px solid #a77ed9;
+    outline: none;
+    background-color: #e7effd;
     border-bottom: 3px solid #9B51E0;
-    border-radius: 10px;
-
 }
 
 #member-mobile {

@@ -49,6 +49,15 @@
             where id = #{id}
     </update>
 
+    <delete id="delete" parameterType="Long">
+        delete from member_table where id=#{id}
+    </delete>
+
+    <delete id="removeFile" parameterType="memberProfile">
+        delete a from member_profile_table a, member_profile_table b
+        where a.id > b.id and a.memberId = b.memberId;
+    </delete>
+
 </mapper>
 
 

@@ -15,14 +15,14 @@ public class MemberService {
     private MemberRepository memberRepository;
 
     public void save(MemberDTO memberDTO) throws IOException {
-        if(memberDTO.getProfileFile().isEmpty()) {
+        if (memberDTO.getProfileFile().isEmpty()) {
             memberDTO.setMemberProfile(0);
             memberRepository.save(memberDTO);
         } else {
             memberDTO.setMemberProfile(1);
             MemberDTO dto = memberRepository.save(memberDTO);
             String originalFileName = memberDTO.getProfileFile().getOriginalFilename();
-            String storedFileName = System.currentTimeMillis()+"-"+originalFileName;
+            String storedFileName = System.currentTimeMillis() + "-" + originalFileName;
 
             MemberProfileDTO memberProfileDTO = new MemberProfileDTO();
             memberProfileDTO.setOriginalFileName(originalFileName);
@@ -61,20 +61,34 @@ public class MemberService {
 
     public void update(MemberDTO memberDTO) throws IOException {
         MemberDTO dto = memberRepository.update(memberDTO);
+    }
+    public void updateFile(MemberDTO memberDTO, MemberProfileDTO memberProfileDTO) throws IOException {
+        MemberProfileDTO profile = memberRepository.updateFile(memberProfileDTO);
 
-        // 프로필 수정
+//        MemberDTO memberDTO = new MemberDTO();
         String originalFileName = memberDTO.getProfileFile().getOriginalFilename();
-        String storedFileName = System.currentTimeMillis()+"-"+originalFileName;
-
-        MemberProfileDTO memberProfileDTO = new MemberProfileDTO();
+        String storedFileName = System.currentTimeMillis() + "-" + originalFileName;
         memberProfileDTO.setOriginalFileName(originalFileName);
         memberProfileDTO.setStoredFileName(storedFileName);
+        memberProfileDTO.setMemberId(memberDTO.getId());
+
         String savePath = "D:\\springFramework_img\\mjimages\\" + storedFileName;
 
         memberDTO.getProfileFile().transferTo(new File(savePath));
-        memberRepository.updateFile(memberProfileDTO);
+        memberRepository.saveFile(memberProfileDTO);
+    }
+//    public void removeFile(MemberDTO memberDTO, MemberProfileDTO memberProfileDTO) {
+//        memberRepository.removeFile(id);
+//    }
 
 
 
+    public void delete(Long id) {
+        memberRepository.delete(id);
+    }
+
+
+    public void removeFile(MemberProfileDTO memberProfileDTO) {
+        memberRepository.removeFile(memberProfileDTO);
     }
 }

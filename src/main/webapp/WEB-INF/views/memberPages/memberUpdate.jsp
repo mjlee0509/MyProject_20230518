@@ -33,7 +33,7 @@
                 </td>
             </tr>
             <tr>
-                <td><input type="file" name="profileFile" id="profile-img" value="프로필사진 수정" onchange="preview()"></td>
+                <td><input type="file" name="profileFile" id="profile-img" value="프로필사진 수정" onclick="delete_img()" onchange="preview()"></td>
             </tr>
         </table>
 
@@ -80,16 +80,17 @@
             <tr>
                 <td><textarea name="memberDescription" id="member-description" value="${member.memberDescription}"
                               cols="30"
-                              rows="10"></textarea></td>
+                              rows="10">${member.memberDescription}</textarea></td>
             </tr>
+        </table>
 
+        <table class="pw-table">
             <tr>
                 <td><h3>PASSWORD</h3></td>
             </tr>
             <tr>
-                <td><input type="text" name="memberPassword" id="member-password" placeholder="본인확인을 위해 비밀번호를 입력하세요"></td>
+                <td><input type="text" name="memberPassword" id="member-password" placeholder="회원정보 수정 및 탈퇴를 위해 비밀번호를 입력하세요"></td>
             </tr>
-
         </table>
 
         <div class="button-area">
@@ -101,6 +102,10 @@
 <%@include file="../components/footer.jsp" %>
 </body>
 <script>
+    const delete_img = () => {
+        document.getElementById("profile-img-box").src = null;
+    }
+
     const preview = () => {
         const preview = new FileReader();
         preview.onload = function (e) {
@@ -119,15 +124,16 @@
         }
     }
 
-    <%--const delete_request = () => {--%>
-    <%--    const inputPass = document.getElementById("member-password").value;--%>
-    <%--    const dbPass = '${member.memberPassword}';--%>
-    <%--    if (inputPass == dbPass) {--%>
-    <%--        location.href = "/member/delete";--%>
-    <%--    } else {--%>
-    <%--        alert("비밀번호가 일치하지 않습니다")--%>
-    <%--    }--%>
+    const delete_request = () => {
+        const inputPass = document.getElementById("member-password").value;
+        const dbPass = '${member.memberPassword}';
+        if (inputPass == dbPass) {
+            alert("회원탈퇴 완료")
+            location.href = "/member/delete?id=${member.id}";
+        } else {
+            alert("비밀번호가 일치하지 않습니다")
+        }
 
-    <%--}--%>
+    }
 </script>
 </html>

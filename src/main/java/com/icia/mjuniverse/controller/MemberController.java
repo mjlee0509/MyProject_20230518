@@ -71,10 +71,10 @@ public class MemberController {
 
     @GetMapping("/detail")
     public String detail(HttpSession session, Model model) {
-        String loginEmail = (String)session.getAttribute("loginEmail");
+        String loginEmail = (String) session.getAttribute("loginEmail");
         MemberDTO memberDTO = memberService.findByEmail(loginEmail);
         model.addAttribute("member", memberDTO);
-        if(memberDTO.getMemberProfile()==1) {
+        if (memberDTO.getMemberProfile() == 1) {
             MemberProfileDTO memberProfileDTO = memberService.findFile(memberDTO.getId());
             model.addAttribute("memberProfile", memberProfileDTO);
         }
@@ -83,10 +83,10 @@ public class MemberController {
 
     @GetMapping("/update")
     public String updateForm(HttpSession session, Model model) {
-        String loginEmail = (String)session.getAttribute("loginEmail");
+        String loginEmail = (String) session.getAttribute("loginEmail");
         MemberDTO memberDTO = memberService.findByEmail(loginEmail);
         model.addAttribute("member", memberDTO);
-        if(memberDTO.getMemberProfile()==1) {
+        if (memberDTO.getMemberProfile() == 1) {
             MemberProfileDTO memberProfileDTO = memberService.findFile(memberDTO.getId());
             model.addAttribute("memberProfile", memberProfileDTO);
         }
@@ -94,11 +94,27 @@ public class MemberController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute MemberDTO memberDTO, Model model) throws IOException {
+    public String update(@ModelAttribute MemberDTO memberDTO,
+                         @ModelAttribute MemberProfileDTO memberProfileDTO,
+                         Model model,
+                         HttpSession session) throws IOException {
         memberService.update(memberDTO);
+        memberService.updateFile(memberDTO, memberProfileDTO);
+        memberService.removeFile(memberProfileDTO);
+
         MemberDTO dto = memberService.findById(memberDTO.getId());
+        MemberProfileDTO profile = memberService.findFile(memberProfileDTO.getMemberId());
+
         model.addAttribute("member", dto);
-        return "redirect:/member/detail?id="+memberDTO.getId();
+        model.addAttribute("profile", profile);
+        return "redirect:/member/detail?id=" + memberDTO.getId();
+    }
+
+    @GetMapping("/delete")
+    public String delete(@RequestParam("id") Long id, HttpSession session) {
+        memberService.delete(id);
+        session.removeAttribute("loginEmail");
+        return "redirect:/";
     }
 
 }
