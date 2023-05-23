@@ -54,8 +54,15 @@
     </delete>
 
     <delete id="removeFile" parameterType="memberProfile">
-        delete a from member_profile_table a, member_profile_table b
-        where a.id > b.id and a.memberId = b.memberId;
+        delete from member_profile_table
+        where id in (
+            select id from (
+                               select row_number() over (
+            partition by memberId order by id desc ) A,
+                                       id from member_profile_table
+                           ) B
+            where A > 1
+        );
     </delete>
 
 </mapper>
