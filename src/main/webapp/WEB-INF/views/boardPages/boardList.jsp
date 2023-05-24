@@ -2,12 +2,10 @@
   Created by IntelliJ IDEA.
   User: user
   Date: 2023-05-24
-  Time: 오전 9:49
+  Time: 오후 4:11
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 <html>
 <head>
     <title>MJ UNIVERSE</title>
@@ -17,15 +15,19 @@
     <script src="/resources/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<%@include file="../components/boardHeader.jsp"%>
-<div class="main">
-    <a href="/board/list">게시판 둘러보기</a>
-    <a href="/board/list">지구</a>
-    <a href="/board/list">수성</a>
-    <a href="/board/list">금성</a>
-    <a href="/board/list">화성</a>
+<%@include file="../components/boardHeader.jsp" %>
+<c:forEach items="${boardList}" var="board">
+    <div class="card">
+        <div class="thumbnail-area">
 
-</div>
-<%@include file="../components/footer.jsp"%>
+        </div>
+        <div class="contents-area">
+            <h4>${board.boardTitle}</h4>
+            <p>${board.boardContents}</p>
+        </div>
+
+    </div>
+</c:forEach>
+
 </body>
 </html>

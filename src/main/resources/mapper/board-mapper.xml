@@ -18,5 +18,9 @@
         values (#{originalFileName}, #{storedFileName}, #{boardId})
     </insert>
 
+    <select id="findAll" parameterType="board">
+        select * from board_table order by id desc;
+    </select>
+
 
 </mapper>

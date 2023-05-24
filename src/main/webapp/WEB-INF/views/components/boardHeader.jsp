@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div class="header">
-    <a href="/">${sessionScope.loginEmail}'s Universe</a>
+    <a href="/board/">${sessionScope.loginEmail}'s Universe</a>
     <div class="right">
         <a href="/member/detail"> ABOUT ME </a>
         <a href="/"> <i class="bi bi-search"></i> </a>
