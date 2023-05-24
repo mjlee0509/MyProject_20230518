@@ -57,7 +57,7 @@ public class MemberController {
             session.setAttribute("loginEmail", memberDTO.getMemberEmail());
             session.setAttribute("loginId", memberDTO.getId());
             model.addAttribute("loginInfo", memberDTO);
-            return "index";
+            return "redirect:/board/";
         } else {
             return "memberPages/memberLogin";
         }

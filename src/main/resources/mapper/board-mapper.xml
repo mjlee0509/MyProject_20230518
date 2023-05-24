@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Board">
+    <insert id="save" parameterType="board" useGeneratedKeys="true" keyProperty="id">
+        insert into board_table (boardTitle, boardWriter, boardContents, fileAttached, thumbnailAttached)
+        values (#{boardTitle}, #{boardWriter}, #{boardContents}, #{fileAttached}, #{thumbnailAttached})
+    </insert>
+
+    <insert id="saveFile" parameterType="boardFile">
+        insert into board_file_table(originalFilesName, storedFilesName, boardId)
+        values (#{originalFilesName}, #{storedFilesName}, #{boardId})
+    </insert>
+
+    <insert id="saveThumbnail" parameterType="boardThumbnail">
+        insert into board_thumbnail_table(originalFileName, storedFileName, boardId)
+        values (#{originalFileName}, #{storedFileName}, #{boardId})
+    </insert>
+
+
+</mapper>

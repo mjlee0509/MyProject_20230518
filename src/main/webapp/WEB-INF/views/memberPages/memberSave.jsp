@@ -42,7 +42,7 @@
             <input type="text" name="memberPassConfirm" id="member-pass-confirm" placeholder="비밀번호를 다시 입력하세요"> <br>
             <p id="password-confirm-result"></p>
 
-            <select>
+            <select id="mobile-select">
                 <option value="SKT">SKT</option>
                 <option value="kt">kt</option>
                 <option value="LGU">LGU</option>

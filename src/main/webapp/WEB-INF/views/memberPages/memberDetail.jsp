@@ -30,7 +30,7 @@
             </td>
             <td>
                 <h3>${member.memberEmail}</h3>
-                <h6>${member.memberName} 님의 우주</h6>
+                <h6>${member.memberName} 유니버스에 오신 것을 환영합니다.</h6>
             </td>
         </tr>
     </table>

@@ -5,5 +5,8 @@
     <typeAliases>
         <typeAlias type="com.icia.mjuniverse.dto.MemberDTO" alias="member" />
         <typeAlias type="com.icia.mjuniverse.dto.MemberProfileDTO" alias="memberProfile" />
+        <typeAlias type="com.icia.mjuniverse.dto.BoardDTO" alias="board" />
+        <typeAlias type="com.icia.mjuniverse.dto.BoardFileDTO" alias="boardFile" />
+        <typeAlias type="com.icia.mjuniverse.dto.BoardThumbnailDTO" alias="boardThumbnail" />
     </typeAliases>
 </configuration>

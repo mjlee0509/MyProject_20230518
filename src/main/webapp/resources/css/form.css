@@ -18,6 +18,11 @@
     width: 33%;
 }
 
+#board-area {
+    margin: 50px auto;
+    width: 100%;
+}
+
 #form-area .input-area {
     margin: auto;
     text-align: center;
@@ -45,7 +50,7 @@ input[type=text]:focus {
 }
 
 
-select {
+#mobile-select {
     width: 32%;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
@@ -58,7 +63,7 @@ select {
     line-height: 16px;
 }
 
-select:focus{
+#mobile-select:focus{
     border: 1px solid #9B51E0;
     box-sizing: border-box;
     border-radius: 5px;
@@ -81,6 +86,11 @@ textarea:focus {
     border-bottom: 3px solid #9B51E0;
 }
 
+#board-contents:focus {
+    background-color: transparent;
+    border-bottom: 3px solid #9B51E0;
+}
+
 #member-mobile {
     width: 64%;
 }
@@ -89,5 +99,36 @@ textarea:focus {
     float: right;
     margin-top: 10px;
     margin-right: 10px;
+}
+
+#board-category {
+    width: 25%;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid black;
+    background-color: #e7effd;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    font-family: 'NeoDunggeunmo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    margin-bottom: 15px;
+}
+
+#board-title {
+    width: 95%;
+    font-family: 'NeoDunggeunmoPro-Regular';
+}
+
+#file-area {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#thumbnail-area {
+    margin-bottom: 30px;
 }
 
