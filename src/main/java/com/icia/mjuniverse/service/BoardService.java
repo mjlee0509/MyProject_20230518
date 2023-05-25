@@ -1,8 +1,6 @@
 package com.icia.mjuniverse.service;
 
-import com.icia.mjuniverse.dto.BoardDTO;
-import com.icia.mjuniverse.dto.BoardFileDTO;
-import com.icia.mjuniverse.dto.BoardThumbnailDTO;
+import com.icia.mjuniverse.dto.*;
 import com.icia.mjuniverse.repo.BoardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +8,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class BoardService {
@@ -86,17 +86,86 @@ public class BoardService {
                 boardFile.transferTo(new File(savepath));
                 boardRepository.saveFile(boardFileDTO);
             }
-
-
-
-
-
-
         }
     }
 
-    public List<BoardDTO> findAll() {
-        List<BoardDTO> boardDTOList = boardRepository.findAll();
+//    public List<BoardDTO> findAll() {
+//        List<BoardDTO> boardDTOList = boardRepository.findAll();
+//        return boardDTOList;
+//    }
+
+    public List<BoardDTO> pagingList(int page) {
+        int pageLimit = 6;
+        int pageStart = (page-1)*pageLimit;
+        Map<String, Integer> pagingParam = new HashMap<>();
+        pagingParam.put("start", pageStart);
+        pagingParam.put("limit", pageLimit);
+        List<BoardDTO> boardDTOList = boardRepository.pagingList(pagingParam);
         return boardDTOList;
     }
+
+    public PageDTO pagingParam(int page) {
+        int pageLimit = 6; // 한 페이지에 보여질 글의 개수
+        int blockLimit = 10; // 한 블록 페이지에 보여질 블록의 개수
+        int boardCount = boardRepository.boardCount();
+
+        int maxPage = (int)(Math.ceil((double)boardCount/pageLimit));
+
+        int startPage = (((int)(Math.ceil((double)page/blockLimit))) - 1) * blockLimit + 1 ;
+        int endPage = startPage + blockLimit - 1;
+
+        if(endPage > maxPage) {
+            endPage = maxPage;
+        }
+
+        PageDTO pageDTO = new PageDTO();
+        pageDTO.setPage(page);
+        pageDTO.setMaxPage(maxPage);
+        pageDTO.setEndPage(endPage);
+        pageDTO.setStartPage(startPage);
+
+        return pageDTO;
+    }
+
+    public List<BoardDTO> searchList(int page, String type, String q) {
+        int pageLimit = 6;
+        int pagingStart = (page-1)*pageLimit;
+        Map<String, Object> pagingParam = new HashMap<>();
+        pagingParam.put("start", pagingStart);
+        pagingParam.put("limit", pageLimit);
+        pagingParam.put("q", q);
+        pagingParam.put("type", type);
+        List<BoardDTO> boardDTOList = boardRepository.searchList(pagingParam);
+        return boardDTOList;
+    }
+
+    public PageDTO pagingSearchParam(int page, String type, String q) {
+        int pageList = 6;
+        int blockLimit = 10;
+        Map<String, Object> pagingParam = new HashMap<>();
+        pagingParam.put("q", q);
+        pagingParam.put("type", type);
+        int boardCount = boardRepository.boardSearchCount(pagingParam);
+        int maxPage = (int)(Math.ceil((double)boardCount/pageList)) ;
+        int startPage = (((int)(Math.ceil((double)page/blockLimit))) - 1) * blockLimit + 1 ;
+        int endPage = startPage + blockLimit - 1;
+        if (endPage > maxPage) {
+            endPage = maxPage;
+        }
+        PageDTO pageDTO = new PageDTO();
+        pageDTO.setPage(page);
+        pageDTO.setMaxPage(maxPage);
+        pageDTO.setEndPage(endPage);
+        pageDTO.setStartPage(startPage);
+        return pageDTO;
+    }
+
+//    public BoardDTO findById(Long id) {
+//        BoardDTO boardDTO = boardRepository.findById(id);
+//        return boardDTO;
+//    }
+//
+//    public List<BoardThumbnailDTO> findThumbnail(Long id) {
+//        return boardRepository.findThumbnail(id);
+//    }
 }

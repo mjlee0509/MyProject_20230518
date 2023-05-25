@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="/resources/bootstrap.min.css">
     <script src="/resources/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+
+
 </head>
 <body>
 <div class="main-50">
@@ -73,6 +76,10 @@
         }
         preview.readAsDataURL(document.getElementById("board-file-save").files[0])
     };
+
+    CKEDITOR.replace('editor1', {
+        height: '350px'
+    });
 
 </script>
 </html>

@@ -1,15 +1,12 @@
 package com.icia.mjuniverse.controller;
 
-import com.icia.mjuniverse.dto.BoardDTO;
+import com.icia.mjuniverse.dto.*;
 import com.icia.mjuniverse.service.BoardService;
 import com.icia.mjuniverse.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -38,9 +35,25 @@ public class BoardController {
     }
 
     @GetMapping("/list")
-    public String list(Model model) {
-        List<BoardDTO> boardDTOList = boardService.findAll();
+    public String list(@RequestParam(value = "page", required = false, defaultValue = "1") int page,
+                       @RequestParam(value = "q", required = false, defaultValue = "") String q,
+                       @RequestParam(value = "type", required = false, defaultValue = "boardTitle") String type,
+                       Model model) {
+        List<BoardDTO> boardDTOList = null;
+        PageDTO pageDTO = null;
+        // fx1. 페이징 및 검색처리
+        if (q.equals("")) {
+            boardDTOList = boardService.pagingList(page);
+            pageDTO = boardService.pagingParam(page);
+        } else {
+            boardDTOList = boardService.searchList(page, type, q);
+            pageDTO = boardService.pagingSearchParam(page, type, q);
+        }
         model.addAttribute("boardList", boardDTOList);
+        model.addAttribute("paging", pageDTO);
+        model.addAttribute("q", q);
+        model.addAttribute("type", type);
+        // fx2. 썸네일 띄우기
         return "boardPages/boardList";
     }
 

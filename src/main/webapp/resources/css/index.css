@@ -14,6 +14,10 @@
     font-style: normal;
 }
 
+*{
+    margin: auto;
+}
+
 .header {
     overflow: hidden;
     padding-top: 15px;
@@ -85,5 +89,96 @@
     text-align: center;
     margin: auto;
 }
+
+#board-category-card {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+#board-card {
+    width: 100%;
+    margin: auto;
+    text-align: left;
+}
+
+#board-category-card .col-2,
+#board-card .col-2{
+    margin-bottom: 50px;
+}
+
+#board-category-card h4{
+    font-family: NeoDunggeunmoPro-Regular;
+    margin: auto;
+    padding-top: 50px;
+    text-align: center;
+}
+
+#board-card h4{
+    font-family: NeoDunggeunmoPro-Regular;
+    margin: auto;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+#board-card p {
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    padding-bottom: 30px;
+}
+
+#board-card-info{
+    text-align: left;
+}
+
+
+.pagination {
+    margin: 50px auto;
+    width: 10%;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.page-item {
+    margin: auto;
+}
+
+.page-item .page-link {
+    text-decoration: none;
+    margin: auto;
+    border: none;
+    color: black;
+}
+
+
+.page-item-active .page-link {
+    z-index: 1;
+    font-weight: bold;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 3px solid #7300fe;
+    color : #7300fe;
+    margin: auto;
+}
+
+.page-link:focus .page-link:hover {
+
+
+}
+
 
 
