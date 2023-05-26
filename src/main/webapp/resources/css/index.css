@@ -14,16 +14,24 @@
     font-style: normal;
 }
 
-*{
-    margin: auto;
+.main A {
+    text-decoration: none;
+    color: black;
 }
 
+
 .header {
+    background-color: white;
     overflow: hidden;
     padding-top: 15px;
     padding-bottom: 15px;
     margin: auto;
     width: 95%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
 }
 
 .header a {
@@ -96,52 +104,7 @@
     text-align: center;
 }
 
-#board-card {
-    width: 100%;
-    margin: auto;
-    text-align: left;
-}
 
-#board-category-card .col-2,
-#board-card .col-2{
-    margin-bottom: 50px;
-}
-
-#board-category-card h4{
-    font-family: NeoDunggeunmoPro-Regular;
-    margin: auto;
-    padding-top: 50px;
-    text-align: center;
-}
-
-#board-card h4{
-    font-family: NeoDunggeunmoPro-Regular;
-    margin: auto;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    text-align: left;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-}
-
-#board-card p {
-    text-align: left;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    padding-bottom: 30px;
-}
-
-#board-card-info{
-    text-align: left;
-}
 
 
 .pagination {
@@ -163,7 +126,6 @@
     color: black;
 }
 
-
 .page-item-active .page-link {
     z-index: 1;
     font-weight: bold;
@@ -173,11 +135,6 @@
     border-bottom: 3px solid #7300fe;
     color : #7300fe;
     margin: auto;
-}
-
-.page-link:focus .page-link:hover {
-
-
 }
 
 

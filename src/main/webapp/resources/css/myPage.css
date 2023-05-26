@@ -23,6 +23,11 @@
     position: relative;
 }
 
+.main-50 a {
+    text-decoration: none;
+    color: black;
+}
+
 .main-50 h2{
     font-family: NeoDunggeunmoPro-Regular;
     text-align: center;

@@ -1,0 +1,74 @@
+#board-card {
+    width: 100%;
+    margin: auto;
+    text-align: left;
+}
+
+#board-card a {
+    text-decoration: none;
+    color: black;
+}
+
+#board-card .col-12 {
+    border: 1px solid #c7c7c7;
+    margin: 0 auto 30px;
+    border-radius: 10px;
+}
+
+#board-card .col-12:hover {
+    border: none;
+    background-color: #e9dbff;
+}
+
+#board-card .card-img {
+    border: none;
+    width: 100%;
+    height: 56%;
+    margin-bottom: 10px;
+}
+
+#board-card h4{
+    font-family: NeoDunggeunmoPro-Regular;
+    text-align: left;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+}
+
+#board-card .card-date-writer {
+    margin-bottom: 30px;
+}
+
+#board-card p {
+    text-align: left;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    padding-bottom: 30px;
+    line-height: 1.5;
+    height: 4.5em;
+}
+
+.card-date-writer p {
+    font-family: NeoDunggeunmo;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#board-card .card-contents {
+    margin-bottom: 30px;
+}
+
+#board-card .card-hits-like-comment {
+    margin-bottom: 30px;
+}
+
+.card-hits-like-comment span {
+    padding-left: 5px;
+    padding-right: 5px;
+
+}

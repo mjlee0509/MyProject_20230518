@@ -12,6 +12,7 @@
 <head>
     <title>MJ UNIVERSE</title>
     <link rel="stylesheet" href="/resources/css/index.css">
+    <link rel="stylesheet" href="/resources/css/search.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/resources/bootstrap.min.css">
     <script src="/resources/bootstrap.bundle.min.js"></script>

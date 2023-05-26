@@ -52,11 +52,20 @@ public class BoardRepository {
     }
 
 
-//    public BoardDTO findById(Long id) {
-//        return sql.selectOne("Board.findById", id);
-//    }
-//
-//    public List<BoardThumbnailDTO> findThumbnail(Long boardId) {
-//        return sql.selectList("Board.findThumbnail", boardId);
-//    }
+    public BoardDTO findById(Long id) {
+        return sql.selectOne("Board.findById", id);
+    }
+
+    public BoardThumbnailDTO findThumbnail(Long boardId) {
+        return sql.selectOne("Board.findThumbnail", boardId);
+    }
+
+    public void updateHits(Long id) {
+        sql.update("Board.updateHits", id);
+    }
+    public List<BoardFileDTO> findFile(Long boardId) {
+        return sql.selectList("Board.findFile", boardId);
+    }
+
+
 }

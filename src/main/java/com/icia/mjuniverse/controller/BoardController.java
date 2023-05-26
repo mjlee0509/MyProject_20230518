@@ -53,8 +53,37 @@ public class BoardController {
         model.addAttribute("paging", pageDTO);
         model.addAttribute("q", q);
         model.addAttribute("type", type);
-        // fx2. 썸네일 띄우기
+
         return "boardPages/boardList";
+    }
+
+    @GetMapping
+    public String detail(@RequestParam("id") Long id,
+                         @RequestParam(value = "name", required = false, defaultValue = "1") int page,
+                         @RequestParam(value = "q", required = false, defaultValue = "") String q,
+                         @RequestParam(value = "type", required = false, defaultValue = "boardTitle") String type,
+                         Model model) {
+        boardService.updateHits(id);
+        BoardDTO boardDTO = boardService.findById(id);
+        model.addAttribute("board", boardDTO);
+        model.addAttribute("page", page);
+        model.addAttribute("q", q);
+        model.addAttribute("type", type);
+        // 썸네일 가져오기
+        if (boardDTO.getThumbnailAttached() == 1) {
+            BoardThumbnailDTO boardThumbnailDTO = boardService.findThumbnail(boardDTO.getId());
+            model.addAttribute("boardThumbnail", boardThumbnailDTO);
+        }
+        // 첨부파일 가져오기
+        if (boardDTO.getFileAttached() == 1) {
+            List<BoardFileDTO> boardFileDTOList = boardService.findFile(id);
+            System.out.println("boardFileDTOList.get(0) = " + boardFileDTOList.get(0));
+            model.addAttribute("boardFileList", boardFileDTOList);
+        }
+
+        return "boardPages/boardDetail";
+
+
     }
 
 

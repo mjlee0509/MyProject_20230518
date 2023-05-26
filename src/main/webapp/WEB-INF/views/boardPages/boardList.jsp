@@ -14,33 +14,64 @@
     <title>MJ UNIVERSE</title>
     <link rel="stylesheet" href="/resources/css/index.css">
     <link rel="stylesheet" href="/resources/css/myPage.css">
+    <link rel="stylesheet" href="/resources/css/search.css">
+    <link rel="stylesheet" href="/resources/css/boardCard.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="/resources/bootstrap.min.css">
     <script src="/resources/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 <%@include file="../components/boardHeader.jsp" %>
-<div class="main">
+<div class="main-50">
+    <%--    <div id="search-area">--%>
+    <%--        <form action="/board/list" method="get">--%>
+    <%--            <select name="type">--%>
+    <%--                <option value="boardTitle">제목</option>--%>
+    <%--                <option value="boardWriter">작성자</option>--%>
+    <%--                <option value="boardContents">내용</option>--%>
+    <%--            </select>--%>
+    <%--            <input type="text" name="q" placeholder="검색어">--%>
+    <%--            <input type="submit" value="검색">--%>
+    <%--        </form>--%>
+    <%--    </div>--%>
     <div id="board-card">
         <div class="row">
             <c:forEach items="${boardList}" var="board">
-                <div class="col-6">
-                    <div class="img">
-                        <a><img src="#" alt="" style="border: none" width="100%" height="56%"></a>
-                    </div>
-                    <div class="contents">
-                        <div>
-                            <h4>${board.boardTitle}</h4>
-                            <p>${board.boardContents}</p>
+                <a href="/board?id=${board.id}&page=${paging.page}&q=${q}&type=${type}">
+                <div class="col-12">
+                        <div class="card-thumbnail">
+                            <img src="${pageContext.request.contextPath}/upload/${boardThumbnail.storedFileName}"
+                                    alt="" style="border: none; margin-top: 30px" width="border-box" height="border-box">
                         </div>
-                        <div>
-                            <span><i class="bi bi-calendar3"></i></span>
-                            <span><fmt:formatDate value="${board.boardCreatedDate}" pattern="yyyy년 MM월 dd일 HH:MM"></fmt:formatDate></span>
-                            <span>  |  </span>
-                            <span><i class="bi bi-eye"></i></span>
-                            <span>${board.boardHits}</span>
+                        <div class="card-contents">
+                            <div class="card-title">
+                                <h4>${board.boardTitle}</h4>
+                            </div>
+                            <div class="card-date-writer">
+                                <span><i class="bi bi-calendar3"></i></span>
+                                <span><fmt:formatDate value="${board.boardCreatedDate}"
+                                                      pattern="yyyy년 MM월 dd일 HH:MM"></fmt:formatDate></span>
+                                <span>  |  </span>
+                                <span><i class="bi bi-person"></i></span>
+                                <span>${board.boardWriter}</span>
+                                <br>
+                            </div>
+                            <div class="card-contents">
+                                <p>${board.boardContents}</p>
+                            </div>
+                            <div class="card-hits-like-comment">
+                                <span><i class="bi bi-eye"></i></span>
+                                <span>${board.boardHits}</span>
+                                <span>  |  </span>
+                                <span><i class="bi bi-heart"></i></span>
+                                <span> 0 </span>
+                                <span>  |  </span>
+                                <span><i class="bi bi-chat-left-dots"></i></span>
+                                <span> 0 </span>
+                                <span></span>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </c:forEach>
         </div>
@@ -53,15 +84,16 @@
             <c:choose>
                 <%--1-1. 현재 페이지가 1일 경우 [이전] 리스트는 글자만 보여준다--%>
                 <c:when test="${paging.page<=1}">
-<%--                    <li class="page-item disabled">--%>
-<%--                        <a class="page-link"><i class="bi bi-arrow-left-circle-fill"></i></a>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="page-item disabled">--%>
+                    <%--                        <a class="page-link"><i class="bi bi-arrow-left-circle-fill"></i></a>--%>
+                    <%--                    </li>--%>
                 </c:when>
 
                 <%--1-2. 그렇지 않은 경우 현재 페이지보다 1 전의 페이지 요청--%>
                 <c:otherwise>
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?page=${paging.page-1}&q=${q}&type=${type}"><i class="bi bi-arrow-left-circle-fill"></i></a>
+                        <a class="page-link" href="/board/list?page=${paging.page-1}&q=${q}&type=${type}"><i
+                                class="bi bi-arrow-left-circle-fill"></i></a>
                     </li>
                 </c:otherwise>
             </c:choose>
@@ -87,13 +119,14 @@
             <%-- 3. [다음] 버튼 --%>
             <c:choose>
                 <c:when test="${paging.page>=paging.maxPage}">
-<%--                    <li class="page-item disabled">--%>
-<%--                        <a class="page-link"><i class="bi bi-arrow-right-circle-fill"></i></a>--%>
-<%--                    </li>--%>
+                    <%--                    <li class="page-item disabled">--%>
+                    <%--                        <a class="page-link"><i class="bi bi-arrow-right-circle-fill"></i></a>--%>
+                    <%--                    </li>--%>
                 </c:when>
                 <c:otherwise>
                     <li class="page-item">
-                        <a class="page-link" href="/board/list?page=${paging.page+1}&q=${q}&type=${type}"><i class="bi bi-arrow-right-circle-fill"></i></a>
+                        <a class="page-link" href="/board/list?page=${paging.page+1}&q=${q}&type=${type}"><i
+                                class="bi bi-arrow-right-circle-fill"></i></a>
                     </li>
                 </c:otherwise>
             </c:choose>

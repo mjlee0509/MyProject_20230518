@@ -160,12 +160,20 @@ public class BoardService {
         return pageDTO;
     }
 
-//    public BoardDTO findById(Long id) {
-//        BoardDTO boardDTO = boardRepository.findById(id);
-//        return boardDTO;
-//    }
-//
-//    public List<BoardThumbnailDTO> findThumbnail(Long id) {
-//        return boardRepository.findThumbnail(id);
-//    }
+    public BoardDTO findById(Long id) {
+        BoardDTO boardDTO = boardRepository.findById(id);
+        return boardDTO;
+    }
+
+    public BoardThumbnailDTO findThumbnail(Long id) {
+        return boardRepository.findThumbnail(id);
+    }
+
+    public void updateHits(Long id) {
+        boardRepository.updateHits(id);
+    }
+
+    public List<BoardFileDTO> findFile(Long id) {
+        return boardRepository.findFile(id);
+    }
 }

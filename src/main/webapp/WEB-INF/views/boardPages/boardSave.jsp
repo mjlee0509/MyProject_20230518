@@ -16,7 +16,14 @@
     <link rel="stylesheet" href="/resources/bootstrap.min.css">
     <script src="/resources/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-    <script src="//cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor.create(document.querySelector('#editor'));
+
+        ClassicEditor.replace('editor', {
+            height: '350px'
+        });
+    </script>
 
 
 </head>
@@ -44,7 +51,7 @@
             style="border: none">
         </div>
 
-        <textarea name="boardContents" id="board-contents" cols="300" rows="50" placeholder="내용을 입력하세요"></textarea>
+        <textarea name="boardContents" id="editor" cols="300" rows="50" placeholder="내용을 입력하세요"></textarea>
 
         <div id="file-area">
             <img id="board-file-box" src="#" alt="" width="100" height="100"

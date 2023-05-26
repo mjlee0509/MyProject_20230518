@@ -31,11 +31,11 @@
     </select>
 
     <select id="search" parameterType="java.util.HashMap" resultType="board">
-        select * from board_table where ${type} like concat('%',#{q}),'%') order by desc limit #{start}, #{limit}
+        select * from board_table where ${type} like concat('%',#{q},'%') order by id desc limit #{start}, #{limit}
     </select>
 
     <select id="searchCount" parameterType="java.util.HashMap" resultType="Integer">
-        select count(id) from board_table where ${type} like concat('%',#{q}),'%')
+        select count(id) from board_table where ${type} like concat('%',#{q},'%')
     </select>
 
     <select id="findThumbnail" parameterType="Long" resultType="boardThumbnail">
@@ -45,6 +45,16 @@
     <select id="findById" parameterType="Long" resultType="board">
         select * from board_table where id=#{id}
     </select>
+
+    <select id="updateHits" parameterType="Long">
+        update board_table set boardHits = boardHits+1 where id=#{id}
+    </select>
+
+    <select id="findFile" parameterType="Long" resultType="boardFile">
+        select * from board_file_table where boardId=#{boardId}
+    </select>
+
+
 
 
 

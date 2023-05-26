@@ -52,7 +52,7 @@ input[type=text]:focus {
 
 #mobile-select {
     width: 32%;
-    border: 1px solid #C4C4C4;
+    border: 1px solid #e9e9ff;
     box-sizing: border-box;
     border-radius: 10px;
     padding: 12px 13px;
@@ -67,7 +67,7 @@ input[type=text]:focus {
     border: 1px solid #9B51E0;
     box-sizing: border-box;
     border-radius: 5px;
-    outline: 3px solid #F8E4FF;
+    outline: 3px solid #e9dbff;
     border-radius: 10px;
 }
 
@@ -82,7 +82,7 @@ textarea {
 
 textarea:focus {
     outline: none;
-    background-color: #e7effd;
+    background-color: #e9dbff;
     border-bottom: 3px solid #9B51E0;
 }
 
@@ -107,7 +107,7 @@ textarea:focus {
     border-left: none;
     border-right: none;
     border-bottom: 3px solid black;
-    background-color: #e7effd;
+    background-color: #e9dbff;
     box-sizing: border-box;
     padding: 12px 13px;
     font-family: 'NeoDunggeunmo';
@@ -130,5 +130,6 @@ textarea:focus {
 
 #thumbnail-area {
     margin-bottom: 30px;
+
 }
 
